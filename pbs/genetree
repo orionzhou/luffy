@@ -1,0 +1,18 @@
+#PBS -l nodes=1:ppn=16,walltime=10:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q sb
+
+IN=${IN:-$data/in/paug.fas}
+PRE=${IN%.fas}
+
+echo FAS = $IN
+echo ALN = $PRE.aln
+echo PHB = $PRE.phb
+
+clustalo -i $PRE.fas -o $PRE.aln --outfmt=clu \
+  --iter=3 --output-order=tree-order --force --full --threads=16
+clustalw2 -infile=$PRE.aln -bootstrap=1000 -outorder=aligned \
+  -outputtree=phylip -bootlabels=node -clustering=nj -kimura
+
+

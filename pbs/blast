@@ -1,0 +1,21 @@
+#PBS -l nodes=1:ppn=24,walltime=60:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+PPN=24
+SUF=${SUF:-fas}
+BEG=${BEG:-0}
+DIG=${DIG:-2}
+
+echo PRE = $PRE
+echo BEG = $BEG
+echo DIG = $DIG
+echo SUF = $SUF
+echo TGT = $TGT
+
+END=$((BEG + PPN - 1))
+
+seq $BEG $END | xargs -i printf "%0${DIG}d\\n" {} | \
+  parallel -j $PPN blastp -db $TGT -query $PRE.{}.$SUF -out $PRE.{}.tbl -seg 'yes' -evalue 1e-5 -outfmt 6
+

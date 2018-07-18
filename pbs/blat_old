@@ -1,0 +1,24 @@
+#PBS -l nodes=1:ppn=16,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q sb
+
+QRY=${QRY:-HM034}
+REP=${REP:-1}
+
+echo QRY=$QRY
+
+PROCS=16
+let BEG=($REP-1)*$PROCS
+let END=$REP*$PROCS-1
+echo part.$BEG.fa - part.$END.fa
+
+REF=$data/db/blat/Mtruncatula_4.0.2bit
+cd ${data}/misc3/${QRY}\_HM101/23_blat
+
+seq $BEG $END | xargs -i printf "%03d\\n" {} | \
+  parallel -j $PROCS blat $REF 01_seq/part.{}.fa -ooc=$REF.tile11.ooc 03_raw/part.{}.psl -noTrimA -noHead
+#--sshloginfile $PBS_NODEFILE --workdir $PWD \
+
+echo part.$BEG.fa - part.$END.fa : done
+

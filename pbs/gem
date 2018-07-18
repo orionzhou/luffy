@@ -1,0 +1,23 @@
+#PBS -l nodes=1:ppn=4,mem=8GB,walltime=24:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q lab
+
+K=${K:-60}
+ORG=${ORG:-Mtruncatula_4.0}
+
+echo $ORG ${K}mer
+
+cd $data/db/gem
+pre=$ORG\_${K}mer
+
+if [ ! -s $ORG.gem ]
+then
+    gem-indexer -i $data/genome/$ORG/11_genome.fa -o $ORG -T 4
+fi
+#gem-mappability -T 4 -m 3 -e 3 -I $ORG.gem -l $K -o $pre
+gem-mapper -T 4 -m 3 -e 3 -I $ORG.gem -i /home/youngn/zhoup/Data/genome/HM101/18_stat_k60/01.fa -o /home/youngn/zhoup/Data/genome/HM101/18_stat_k60/06
+gem-2-sam -i 06.map -o 06.sam
+#gem-2-wig -I $ORG.gem -i $pre.mappability -o $pre
+#wigToBigWig $pre.wig $pre.sizes $pre.bw 
+

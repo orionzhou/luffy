@@ -1,0 +1,6 @@
+#PBS -l nodes=1:ppn=2,mem=8GB,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q lab
+
+ftp.pl

@@ -1,0 +1,14 @@
+{
+	"filters":
+	[
+        {
+			"insertSize" : "==0"
+		},
+        {
+			"insertSize" : "<=-1000"
+		},
+		{
+			"insertSize" : ">=1000"
+		}
+	]
+}

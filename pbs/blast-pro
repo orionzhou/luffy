@@ -1,0 +1,9 @@
+##PBS -l nodes=1:ppn=16,walltime=20:00:00
+#PBS -l nodes=1:ppn=24,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+##PBS -q sb
+#PBS -q small
+
+blastp -db /home/youngn/zhoup/Data/db/blastp/HM034.AC -query /home/youngn/zhoup/Data/genome/HM034.AC/51.fas -out /home/youngn/zhoup/Data/misc2/gene.cluster/01.blast/HM034.AC.tbl -num_threads 24 -evalue 1e-5 -outfmt '7 qseqid qlen sseqid slen length bitscore evalue'
+blastp -db /home/youngn/zhoup/Data/db/blastp/HM340.AC -query /home/youngn/zhoup/Data/genome/HM340.AC/51.fas -out /home/youngn/zhoup/Data/misc2/gene.cluster/01.blast/HM340.AC.tbl -num_threads 24 -evalue 1e-5 -outfmt '7 qseqid qlen sseqid slen length bitscore evalue'

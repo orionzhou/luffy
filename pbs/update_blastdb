@@ -1,0 +1,6 @@
+#PBS -l nodes=1:ppn=2,mem=20GB,walltime=20:00:00
+#PBS -m ae
+#PBS -q mirror
+
+cd $data/db/blast
+update_blastdb.pl --decompress nt

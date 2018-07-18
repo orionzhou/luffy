@@ -1,0 +1,9 @@
+#PBS -l nodes=1:ppn=24,walltime=12:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q ram256g
+
+cd $code/r
+Rscript --no-init-file --no-restore br.31.camoco.4.mp.R
+
+

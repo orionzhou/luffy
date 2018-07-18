@@ -1,0 +1,11 @@
+#!/bin/bash -l
+#PBS -l walltime=24:00:00,pmem=4gb,nodes=4:ppn=2
+#PBS -m ae
+
+module load intel
+module unload pmpi/intel
+module load ompi/intel
+export OMP_NUM_THREADS=8
+pBWA aln -n 8 -f $h/Data/repo/mt_35/11_pipe_bwa/03_bwa/HM005_06.1 $h/data/db/bwa/mt_35 $h/Data/repo/mt_35/06_reads/HM005_06.1.fq.gz 100000000
+
+

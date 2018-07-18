@@ -1,0 +1,33 @@
+#PBS -l nodes=1:ppn=16,walltime=5:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q sb
+
+IN=${IN:-$data/in/paug.fas}
+OUT=${OUT:-$data/in/paug.gff}
+HINT=${HINT:-$data/in/paug.hint}
+PRE=${OUT%.*}
+
+echo IN = $IN
+echo OUT = $OUT
+echo HINT = $HINT
+
+ln -sf $IN $PRE.fas 
+pyfasta split -n 16 $PRE.fas
+seq 0 15 | xargs -i printf "%02d\\n" {} | \
+  parallel -j 16 augustus --species=medicago \
+  --extrinsicCfgFile=$AUGUSTUS_CONFIG_PATH/extrinsic/extrinsic.mt.cfg \
+  --alternatives-from-evidence=true \
+  --allow_hinted_splicesites=atac \
+  --introns=on --genemodel=partial \
+  --strand=both --gff3=on \
+  --hintsfile=$HINT \
+  --outfile=$PRE.{}.gff \
+  $PRE.{}.fas
+cat $PRE.*.gff | join_aug_pred.pl > $OUT
+
+rm $PRE.fas.*
+rm $PRE.*.fas
+rm $PRE.*.gff
+
+

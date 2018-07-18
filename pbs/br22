@@ -1,0 +1,9 @@
+#PBS -l nodes=1:ppn=1,walltime=4:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small 
+
+cd $code/r
+Rscript --no-init-file --no-restore br.22.deseq.R
+
+

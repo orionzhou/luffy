@@ -1,0 +1,8 @@
+#PBS -l nodes=1:ppn=8,walltime=2:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+module load interproscan
+cd $genome/Zmays_v4
+interproscan.sh -i x1.fas -appl TIGRFAM,SFLD,ProDom,SMART,ProSiteProfiles,SUPERFAMILY,PRINTS,PANTHER,Pfam,Coils,MobiDBLite -f tsv --goterms -o interpro.tsv

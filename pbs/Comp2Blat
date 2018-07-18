@@ -1,0 +1,47 @@
+#PBS -l nodes=1:ppn=24,walltime=30:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+#PBS -A youngn
+#PBS -W group_list=youngn
+
+GRP=youngn
+export HOME=/home/$GRP/zhoux379
+export home=$HOME
+export data=$home/data
+export genome=$home/data/genome
+export misc1=$data/misc1
+export misc2=$data/misc2
+export misc3=$data/misc3
+export misc4=$data/misc4
+changegrp.sh
+
+let BAT=${PBS_ARRAYID}-1
+
+JOB=${JOB:-Comp2Blat}
+PPN=${PPN:-24}
+PRE=${PRE:-$data/in/pblat}
+SUF=${SUF:-fas}
+TGT=${TGT:-HM101}
+DIG=${DIG:-2}
+BEG=$((PPN * BAT))
+END=$((BEG + PPN - 1))
+
+echo PRE = $PRE
+echo BAT = $BAT
+echo BEG = $BEG
+echo END = $END
+echo DIG = $DIG
+echo SUF = $SUF
+echo TGT = $TGT
+
+BIT=$data/db/blat/$TGT.2bit
+OOC=$data/db/blat/$TGT.2bit.tile11.ooc
+REM=$data/genome/$TGT/12.rm/11_genome.fas.out
+
+module load parallel
+seq $BEG $END | xargs -i printf "%0${DIG}d\\n" {} | \
+  parallel -j $PPN blat $BIT $PRE.{}.$SUF -ooc=$OOC $PRE.{}.psl -noTrimA -noHead
+
+mkdir $PRE/../../cps
+#touch $PRE/../../cps/${JOB}

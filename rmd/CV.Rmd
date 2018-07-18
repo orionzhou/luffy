@@ -1,0 +1,103 @@
+---
+output: 
+  pdf_document:
+    citation_package: natbib
+    fig_caption: true
+    latex_engine: pdflatex
+    template: svm-latex-cv.tex
+
+title: "CV"
+author: Peng Zhou
+
+jobtitle: "Post Doctoral Associate"
+# address: "Department of Plant and Microbial Biology, University of Minnesota"
+address: "308 Biological Sciences, 1445 Gortner Avenue, St. Paul, MN 55108"
+fontawesome: yes
+email: zhoux379@umn.edu
+# github: orionzhou
+phone: "612 532 3168"
+web: orionzhou.github.io
+updated: no
+
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+fontfamilyoptions: sc, osf
+linkcolor: blue
+urlcolor: blue
+# spacing: double
+# bibliography: master.bib
+# biblio-style: apsr
+---
+
+# Research Experiences
+## Post Doctoral Associate, Dept. of Plant and Microbial Biology, University of Minnesota
+
+* Constructing gene regulatory networks across different tissues for multiple maize accessions to understand the genetic basis of heterosis
+
+## Graduate Research Assistant, Dept. of Plant Pathology, University of Minnesota
+
+* Developed a computational pipeline to scan and accurately annotate small defense-related peptides in plant genomes
+
+* Constructed *de novo* assemblies of 15 *Medicago* accessions and built a *Medicago* Pan-genome
+
+* Systematically characterized genome-wide architecture and patterns of structural variants of defense-related gene families in *Medicago* populations;
+
+# Education
+* Ph.D. Plant Pathology & Bioinformatics, University of Minnesota \hfill 2015
+
+* M.S. Forensic Genetics, Xi’an Jiaotong University \hfill 2009
+
+* B.E. Biological Engineering & Computer Science and Technology, Xi’an Jiaotong University \hfill 2007
+
+# Skills & Knowledge
+* **Bioinformatics**: Very familiar with Unix environment; Strong programming background with Perl, R, C++ and Python; 5+ years’ experience of high performance computing
+
+* **NGS analysis**: Extensive experience with next generation sequencing data including quality control, read alignment, variant calling and population genetics analysis
+
+* **Population Genomics**: Experience analyzing genome-wide variation patterns and focus on specific gene families to discover interesting biological findings
+
+
+# Presentations
+* **Peng Zhou**. Toward a *Medicago* pan-genome: Assembling and comparing multiple genomes. Powerpoint presentation at *Medicago truncatula* Workshop in Ardmore, September 18-21, 2016
+
+* **Peng Zhou**, Kevin A. T. Silverstein, *et al.* Detecting secreted peptides in plants using SPADA (Secreted Peptide Alignment Discovery Algorithm). Poster presentation at Plant and Animal Genome XXI Conference in San Diego, January 12-16, 2013
+
+* **Peng Zhou**, Kevin A. T. Silverstein, et al. Population-Scale Deep Sequencing Reveals Extensive Structural Variation in *Medicago* species. Poster presentation at MSI Reserach Exhibition, April 25, 2011
+
+# Awards
+* 2013, Doctoral Dissertation Fellowship, University of Minnesota
+
+* 2013, 2011, 2010. MPGI Travel Award, University of Minnesota
+
+* 2012, Elwin Stewart Graduate Student Travel Award, University of Minnesota
+
+# Publications
+* **Zhou, P.**, Silverstein, K. A. T., *et al*. (2017) Exploring structural variation and gene family architecture with *De Novo* assemblies of 15 *Medicago* genomes. *BMC Genomics*.
+
+* Moll, K. M.^\*^, **Zhou, P.**^\*^, *et al*. (2017) Strategies for utilizing BioNano and Dovetail explored through a second reference quality assembly for the legume model, *Medicago truncatula*. *BMC Genomics*.
+
+* Miller, J. R., **Zhou, P.**, *et al*. (2017) Hybrid assembly with long and short reads improves discovery of gene family expansions. *BMC Genomics*.
+
+* Young, N.D., **Zhou, P.** and Silverstein, K.A. (2016) Exploring structural variants in environmentally sensitive gene families. *Curr. Opin. Plant Biol.*.
+
+* Yoder, J., Stanton-Geddes, J., **Zhou, P.**, Briskine, R., Young, N. and Tiffin, P. (2014) Genomic signature of adaptation to climate in *Medicago truncatula*. *Genetics*.
+
+* Nallu, S., Silverstein, K.A., **Zhou, P.**, Young, N.D. and Vandenbosch, K.A. (2014) Patterns of divergence of a large family of nodule cysteine-rich peptides in accessions of *Medicago truncatula*. *The Plant Journal*.
+
+* **Zhou, P.**, Silverstein, K. A. T., Gao L., *et al*. (2013) Detecting small plant peptides using SPADA (Small Peptide Alignment Discovery Application). *BMC Bioinformatics*.
+
+* Paape, T., Bataillon, T., **Zhou, P.**, *et al*. (2013) Selection, genome-wide fitness effects and evolutionary rates in the model legume *Medicago truncatula*. *Molecular Ecology*.
+
+* Paape, T., **Zhou, P.**, Branca, A., Briskine, R., Young, N., & Tiffin, P. (2012). Fine scale population recombination rates, hotspots and correlates of recombination in the *Medicago truncatula* genome. *Genome Biology and Evolution*. 
+
+* Young, N. D., *et al*. (2011). The *Medicago* genome provides insight into the evolution of rhizobial symbioses. *Nature*. 
+
+* Branca, A., Paape, T. D., **Zhou, P.**, *et al*. (2011). Whole-genome nucleotide diversity, recombination, and linkage disequilibrium in the model legume *Medicago truncatula*. *Proceedings of the National Academy of Sciences*.
+
+
+<!--
+require(rmarkdown) 
+rmarkdown::render("/home/springer/zhoux379/git/luffy/rmd/CV.Rmd")
+file.copy("/home/springer/zhoux379/git/luffy/rmd/CV.pdf", "/home/springer/zhoux379/git/orionzhou.github.io/docs", overwrite = T)
+-->

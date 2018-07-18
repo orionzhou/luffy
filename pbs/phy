@@ -1,0 +1,10 @@
+#PBS -l nodes=1:ppn=1,walltime=30:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+#cd $misc2/bact
+#phyml.py 55.aln 56
+
+module load bioperl
+phy.mt.pl -t hapmapdenovo

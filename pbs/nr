@@ -1,0 +1,14 @@
+#PBS -l nodes=2:ppn=24,walltime=4:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+#mt.augus.pl -g HM004
+
+echo $nproc
+
+cd $misc3/comp.og
+
+time blastp -db $data/db/blast/nr -outfmt '6 qseqid qstart qend qlen sseqid sstart send slen length nident mismatch gaps evalue bitscore' -max_target_seqs 3 -evalue 1e-5 -query test.fas -out test.24.out -num_threads 24
+
+time blastp -db $data/db/blast/nr -outfmt '6 qseqid qstart qend qlen sseqid sstart send slen length nident mismatch gaps evalue bitscore' -max_target_seqs 3 -evalue 1e-5 -query test.fas -out test.48.out -num_threads 48

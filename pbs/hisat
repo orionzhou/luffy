@@ -1,0 +1,9 @@
+#PBS -l nodes=1:ppn=24,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q ram256g
+
+cd $genome/Zmays_v4/21.hisat2
+hisat2_extract_snps_haplotypes_VCF.py ../11_genome.fas $misc2/mo17vnt/53.vnt.final/02.vcf maize
+hisat2-build -p 24 --snp maize.snp --haplotype maize.haplotype -f ../11_genome.fas maize
+

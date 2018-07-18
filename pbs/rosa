@@ -1,0 +1,14 @@
+#PBS -l nodes=1:ppn=24,walltime=20:00:00
+##PBS -l nodes=1:ppn=1,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+cd $git/rgeneclust
+cd $misc1
+#rosar.py test.csv test
+#rosar.py rosa.csv rosa
+rosar.py rg.rose2/rose2.csv rg.rose2
+#cd rosa
+#muscle -in 23.cds.nbs.fas -out 48.aln -clw
+#FastTree -nt -gtr 48.aln > 49.nwk

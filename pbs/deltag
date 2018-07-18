@@ -1,0 +1,19 @@
+#PBS -l nodes=1:ppn=4,mem=8GB,walltime=30:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q mirror
+
+ORG=${ORG:-pan3}
+K=${K:-60}
+CHR=${CHR:-chr1}
+
+dir=$data/genome/$ORG/18_stat_k$K/17_deltag
+mkdir -p $dir
+cd $dir
+
+module load unafold
+
+seqtile.pl -i ../../11_genome.fa -step 1 -size 60 -ids $CHR -o $CHR
+melt.pl -n DNA $CHR
+
+

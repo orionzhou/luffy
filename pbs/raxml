@@ -1,0 +1,15 @@
+#PBS -l nodes=1:ppn=24,walltime=90:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+#module load intel ompi/intel
+
+cd $git/rgeneclust
+rosar.py rosa.csv rosa
+
+cd $git/rgeneclust/rosa
+/home/youngn/zhoup/git/standard-RAxML/raxmlHPC-PTHREADS-AVX2 -s 43.fas \
+  -n 61.nwk -m PROTCATDAYHOFF -T 24 -f a -x 98 -p 5 -N 100 -o Arabidopsis
+#mpirun -np 24 $git/ExaML/examl/examl-OMP-AVX \
+#  -t RAxML_parsimonyTree.start -m GAMMA -s 43.binary -n T1

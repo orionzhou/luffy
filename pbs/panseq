@@ -1,0 +1,12 @@
+#PBS -l nodes=1:ppn=16,walltime=96:00:00
+##PBS -l nodes=1:ppn=8,mem=15GB,walltime=150:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q sb128
+
+DIR_TMP=/lustre/zhoup/tmp
+F_TMPL=$soft/paramugsy/pm_qsub_template.sh
+
+cd $misc3/panseq
+paramugsy local -cores 16 -seq-list 02.file.list \
+  -out-maf 21.maf -tmp-dir $DIR_TMP -template-file $F_TMPL

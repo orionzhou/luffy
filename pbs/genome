@@ -1,0 +1,11 @@
+#PBS -l nodes=1:ppn=1,walltime=10:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+genome.py --bwa W22
+genome.py --bwa PH207
+#module load bowtie2/2.3.1
+#genome.py --bowtie2 B73
+#genome.py --bowtie2 W22
+#genome.py --bowtie2 PH207

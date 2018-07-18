@@ -1,0 +1,24 @@
+#PBS -l nodes=1:ppn=2,mem=8GB,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q lab
+
+SAM=${SAM:-HM056}
+
+REF_SIZE=$genome/HM101/15.sizes
+
+dir=$misc3/hapmap/11_mapping
+cd $dir
+
+bamtools filter -in 31_realigned/$SAM.bam -mapQuality ">=20" \
+  -isDuplicate "false" | samtools depth /dev/stdin | \
+  cov2bed.pl -o 35_cov/$SAM.bed
+bedGraphToBigWig 35_cov/$SAM.bed $REF_SIZE 35_cov/$SAM.bw
+rm 35_cov/$SAM.bed
+
+bamFilterAb -i 31_realigned/$SAM.bam -o 36_abcov/$SAM.bam
+bamtools filter -in 36_abcov/$SAM.bam -mapQuality ">=20" \
+  -isDuplicate "false" | samtools depth /dev/stdin | \
+  cov2bed.pl -o 36_abcov/$SAM.bed
+bedGraphToBigWig 36_abcov/$SAM.bed $REF_SIZE 36_abcov/$SAM.bw
+rm 36_abcov/$SAM.bed

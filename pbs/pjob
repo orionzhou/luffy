@@ -1,0 +1,8 @@
+#PBS -l nodes=1:ppn=12,walltime=8:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+#python2 $robin/genie3.py
+cd $misc1/rosa/other/applegenes
+blat 11_genome.fas gene_cds.fas 21.psl

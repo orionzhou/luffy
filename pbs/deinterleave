@@ -1,0 +1,9 @@
+#PBS -l nodes=1:ppn=24,walltime=2:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+cd ~/scratch/mo17vnt/05.reads
+gzip -dc ch_mo17_01.fq.gz | deinterleave_fastq.sh ch_mo17_01_1.fastq.gz ch_mo17_01_2.fastq.gz compress
+gzip -dc ch_mo17_02.fq.gz | deinterleave_fastq.sh ch_mo17_02_1.fastq.gz ch_mo17_02_2.fastq.gz compress
+gzip -dc ch_mo17_03.fq.gz | deinterleave_fastq.sh ch_mo17_03_1.fastq.gz ch_mo17_03_2.fastq.gz compress

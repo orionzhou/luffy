@@ -1,0 +1,13 @@
+#PBS -l nodes=1:ppn=16,walltime=15:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q sb
+
+IN=${IN:-$data/in/test.fas}
+OUT=${OUT:-$data/in/test.aln}
+
+clustalo -i $IN -o $OUT --outfmt=clu \
+  --output-order=tree-order --force --full --threads=16
+#clustalw2 -infile=11.aln -bootstrap=1000 -outorder=aligned \
+#  -outputtree=phylip -bootlabels=node -clustering=nj -kimura
+

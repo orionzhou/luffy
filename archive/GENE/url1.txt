@@ -1,0 +1,1 @@
+http://www.ncbi.nlm.nih.gov/mapview/maps.cgi?taxid=9606&chr=6&map0=genes,rpts,decode,thon,marsh,g3,cntg-r&BEG=15,631,017&END=15,771,250

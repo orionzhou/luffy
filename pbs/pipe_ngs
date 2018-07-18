@@ -1,0 +1,33 @@
+#PBS -l nodes=1:ppn=4,mem=13GB,walltime=72:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q lab
+
+#pipe_ngs.pl -p run -r HM056_SIPE_1_01
+#pipe_ngs.pl -p run -r HM056_SIPE_1_02
+#pipe_ngs.pl -p run -r HM056_SIPE_1_11
+#pipe_ngs.pl -p run -r HM056_SIPE_2_01
+#pipe_ngs.pl -p run -r HM056_SIPE_3_01
+#pipe_ngs.pl -p run -r HM056_LIPE_1_01
+#pipe_ngs.pl -p run -r HM340_LIPE_1_01
+#pipe_ngs.pl -p run -r HM340_SIPE_1_01
+#pipe_ngs.pl -p rerun -r HM056_LIPE_1_01
+#pipe_ngs.pl -p rerun -r HM340_LIPE_1_01
+
+#pipe_ngs.pl -p lib -l HM056_SIPE_1
+#pipe_ngs.pl -p lib -l HM056_SIPE_2
+#pipe_ngs.pl -p lib -l HM056_SIPE_3
+#pipe_ngs.pl -p lib -l HM056_LIPE_1
+#pipe_ngs.pl -p lib -l HM340_SIPE_1
+#pipe_ngs.pl -p lib -l HM340_LIPE_1
+
+pipe_ngs.pl -p run -r HM034_SIPE_1_01
+#pipe_ngs.pl -p run -r HM034_SIPE_2_01
+#pipe_ngs.pl -p run -r HM034_SIPE_2_02
+#pipe_ngs.pl -p run -r HM034_SIPE_2_03
+#pipe_ngs.pl -p run -r HM034_LIPE_1_01
+#pipe_ngs.pl -p run -r HM034_LIPE_1_02
+#pipe_ngs.pl -p lib -l HM034_SIPE_1
+#pipe_ngs.pl -p lib -l HM034_SIPE_2
+#pipe_ngs.pl -p lib -l HM034_LIPE_1
+#pipe_ngs.pl -p sample -s HM034

@@ -1,0 +1,9 @@
+#PBS -l nodes=1:ppn=24,walltime=5:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+PPN=24
+
+cd $misc3/comp.ortho.hm
+parallel -j $PPN < 25.aln.cmd

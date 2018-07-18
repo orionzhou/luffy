@@ -1,0 +1,7 @@
+#!/bin/bash -l
+#PBS -l walltime=00:05:00,pmem=100mb,nodes=3:ppn=3
+#PBS -m ae
+cd /scratch1/zhoup
+module load intel
+module load pmpi/intel
+mpirun -np 9 -hostfile $PBS_NODEFILE $h/bin/matrix

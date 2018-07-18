@@ -1,0 +1,29 @@
+#PBS -l nodes=1:ppn=2,mem=8GB,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q mirror
+
+QRY=${QRY:-HM056}
+TGT=${TGT:-HM101}
+
+echo QRY=$QRY
+echo TGT=$TGT
+
+QRY_FAS=$data/genome/$QRY/11_genome.fa
+TGT_FAS=$data/genome/$TGT/11_genome.fa
+QRY_2BIT=$data/db/blat/$QRY.2bit
+TGT_2BIT=$data/db/blat/$TGT.2bit
+QRY_SIZE=$data/genome/$QRY/15.sizes
+TGT_SIZE=$data/genome/$TGT/15.sizes
+QRY_LEN=$data/genome/$QRY/15_seqlen.tbl
+
+for PRE in nov1 nov2 nov3
+do 
+    dir=$data/misc3/$QRY\_$TGT/41_novelseq/$PRE.blast
+    mkdir -p $dir
+    cd $dir
+    blastn -db $data/db/blast/Mtruncatula_4.0 -outfmt '6 qseqid qstart qend qlen sseqid sstart send slen length nident mismatch gaps evalue bitscore qseq sseq' -num_threads 4 -query $dir/../$PRE.fa -out 11_blastn.tbl
+    blast2gal.pl -i 11_blastn.tbl -o - | galcoord.pl -i - -p qry -q $QRY_LEN -o 12.gal
+    galexpand.pl -i 12.gal -o 12.gall
+done
+

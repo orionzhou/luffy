@@ -1,0 +1,11 @@
+#PBS -l nodes=1:ppn=1,mem=10GB,walltime=19:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q mirror
+
+cd $data/misc3/hapmap_mt40/30_vnt
+#bgzip -cdf acc319.raw.vcf.gz > acc319.raw.vcf
+#(head -n 2 acc319.raw.vcf; cat filters.header; sed -e '1,2d' acc319.raw.vcf) > acc319.vcf
+bgzip -f acc319.vcf
+tabix -p vcf acc319.vcf.gz
+

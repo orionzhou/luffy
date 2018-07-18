@@ -1,0 +1,20 @@
+#PBS -l nodes=1:ppn=1,walltime=240:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q max
+#PBS -A youngn
+#PBS -W group_list=youngn
+
+GRP=youngn
+export HOME=/home/$GRP/zhoux379
+export home=$HOME
+export data=$home/data
+export genome=$home/data/genome
+export misc1=$data/misc1
+export misc2=$data/misc2
+export misc3=$data/misc3
+export misc4=$data/misc4
+changegrp.sh
+
+cd
+s3cmd sync data s3://youngn-zhoux379/

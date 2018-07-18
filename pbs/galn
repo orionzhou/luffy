@@ -1,0 +1,38 @@
+#PBS -l nodes=1:ppn=2,mem=8GB,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q mirror
+
+QRY=${QRY:-HM056}
+TGT=${TGT:-HM101}
+PRE=${PRE:-nov1}
+
+echo QRY=$QRY
+echo TGT=$TGT
+
+QRY_FAS=$data/genome/$QRY/11_genome.fa
+TGT_FAS=$data/genome/$TGT/11_genome.fa
+QRY_2BIT=$data/db/blat/$QRY.2bit
+TGT_2BIT=$data/db/blat/$TGT.2bit
+QRY_SIZE=$data/genome/$QRY/15.sizes
+TGT_SIZE=$data/genome/$TGT/15.sizes
+QRY_LEN=$data/genome/$QRY/15_seqlen.tbl
+
+dir=$data/misc3/$QRY\_$TGT/41_novelseq/$PRE
+mkdir -p $dir
+cd $dir
+
+blat $TGT_2BIT -ooc=$TGT_2BIT.tile11.ooc $dir/../$PRE.fa 12.psl -noHead -noTrimA
+psl2gal.pl -i 12.psl -o - | galcoord.pl -i - -p qry -q $QRY_LEN -o - | galfix.pl -i - -q $QRY_FAS -t $TGT_FAS -o 13.gal
+gal2psl.pl -i 13.gal -o 13.psl
+cat 13.psl ../$PRE.pre.psl > 15.psl
+pslSwap 15.psl 15.swap.psl
+
+axtChain -linearGap=medium -psl 15.swap.psl $QRY_2BIT $TGT_2BIT 31.chain
+chainPreNet 31.chain $QRY_SIZE $TGT_SIZE 33.chain
+chain2gal.pl -i 33.chain -o - | galfix.pl -i - -q $TGT_FAS -t $QRY_FAS -o 33.gal
+chainNet 33.chain $QRY_SIZE $TGT_SIZE stdout /dev/null | netSyntenic stdin 35.net
+netChainSubset 35.net 33.chain stdout | chain2gal.pl -i - -o - | galfix.pl -i - -q $TGT_FAS -t $QRY_FAS -o 35.gal
+galexpand.pl -i 35.gal -o 35.gall
+
+

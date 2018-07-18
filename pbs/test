@@ -1,0 +1,15 @@
+#PBS -l nodes=1:ppn=8,walltime=40:00:00
+##PBS -l nodes=1:ppn=1,walltime=5:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+cd $misc1/jackie.acr
+#blat $genome/PH207/21.blat/db.2bit 02.fas -ooc=$genome/PH207/21.blat/db.2bit.tile11.ooc 04.psl
+
+cd ~/scratch/briggs
+bowtie2 -x $genome/Zmays_v4/21.bowtie2/db -p 8 \
+    --end-to-end --fr \
+    -1 14.trim/BR001_1.PE.fastq.gz -2 14.trim/BR001_2.PE.fastq.gz \
+    -U 14.trim/BR001_1.SE.fastq.gz,14.trim/BR001_2.SE.fastq.gz \
+    -S 25.rsem/BR001.sam

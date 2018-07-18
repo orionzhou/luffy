@@ -1,0 +1,13 @@
+#PBS -l nodes=1:ppn=1,walltime=80:00:00
+#PBS -m a
+#PBS -M zhoux379@umn.edu
+#PBS -q small
+
+#let i=${PBS_ARRAYID}
+#printf -v fi 'part.%03d' "$i"
+#printf -v fo 'part.%03d.tsv' "$i"
+
+cd $misc2/wheatped
+#pedcompute.py --fn 12.inb.coef.tsv 21.pair.tsv 24.pair.cop.tsv 10.tsv
+pedcompute.py --fn 12.inb.coef.tsv 23.pair.shuf.split/$fi 24.pair.cop/$fo 10.tsv
+

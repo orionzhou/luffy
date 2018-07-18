@@ -1,0 +1,13 @@
+#PBS -l nodes=1:ppn=1,mem=8GB,walltime=20:00:00
+#PBS -m ae
+#PBS -M zhoux379@umn.edu
+#PBS -q lab
+
+cd ~/Downloads
+
+wget http://free2.macx.cn:81/Desgin/web/Coda2013.dmg
+wget http://free2.macx.cn:81/tools/other2/LiveWallpaper26.dmg
+wget http://free2.macx.cn:81/tools/photo/Pixelmator31.dmg
+wget http://free2.macx.cn:81/tools/other2/Acorn423.dmg
+
+
