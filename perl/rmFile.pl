@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 use strict;
 my $dir = "/project/youngn/zhoup/Scripts";
 rm_hidden_files($dir);

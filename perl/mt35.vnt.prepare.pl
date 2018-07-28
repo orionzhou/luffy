@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 BEGIN { push (@INC, $ENV{'mt'}."/mt2") };
 use strict; use Init; use Common; use Localdb; use Run; 
 use Annotate; use Readfile; use Writefile; use Seq;

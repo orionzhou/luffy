@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 use strict; use Init; use Common; use Localdb; use Run; 
 use Bio::Seq; use Bio::SeqIO; use Bio::SeqFeature::Generic;
 use Readfile; use Writefile; use Align; use Parser; use Mapping;

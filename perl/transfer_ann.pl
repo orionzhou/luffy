@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 use strict;
 use lib ($ENV{"m"}."/mt2/modules");
 use Init;

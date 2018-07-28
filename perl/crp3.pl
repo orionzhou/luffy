@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 use strict; use Init; use Localdb; use Run;
 use Seq; use Gff; use Crp; use Mapping; use Gtb; use Hmm;
 use Data::Dumper; use Path::Class;

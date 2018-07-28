@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # Author: Martin Dahlo
 #
 # Usage:  perl scriptname.pl <infile>

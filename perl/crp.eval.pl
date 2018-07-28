@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 use lib $ENV{"SCRIPT_HOME_PERL"};
 use Data::Dumper;

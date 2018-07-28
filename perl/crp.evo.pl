@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 use strict;
 use lib $ENV{"SCRIPT_HOME_PERL"};
 use File::Path qw/make_path remove_tree/;

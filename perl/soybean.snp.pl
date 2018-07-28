@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict; use Init; use Common; use Localdb; use Readfile; use Writefile;
 use Bio::Seq; use Bio::SeqIO; use Path::Class;
 use List::Util qw/min max sum/; use POSIX qw/ceil floor/;

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict; use Init; use Common; use Localdb; use Run; use Annotate;
 use Writefile; use Readfile; use Parser; use Vnt; use DB_File;
 use Bio::TreeIO; use Bio::Seq; use Bio::SeqIO; use Path::Class;
