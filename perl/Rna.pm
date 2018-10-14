@@ -152,6 +152,7 @@ sub note {
 
 sub check_mRNA { # infer exon/intron/utr/cds
   my $self = shift;
+  my $tid = $self->id;
 
   my $srd = $self->strand;
   my $locR = [ [1, $self->end-$self->beg+1] ];
@@ -171,7 +172,7 @@ sub check_mRNA { # infer exon/intron/utr/cds
       } elsif( $b > $cdsE ) {
         push @$loc3, [$b, $e];
       } else {
-        die "\nUTR [ $b - $e ] not outside CDS [ $cdsB - $cdsE ]\n";
+        print "\n$tid UTR [ $b - $e ] not outside CDS [ $cdsB - $cdsE ]\n";
       }
     }
   } elsif( !@$locE ) {

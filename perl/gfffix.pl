@@ -206,6 +206,24 @@ sub format_gff_lj {
     close FHI;
     close FHO;
 }
+sub format_gff_genbank {
+    my ($fi, $fo) = @_;
+    open(FHI, "<$fi") || die "cannot read $fi\n";
+    open(FHO, ">$fo") || die "cannot write to $fo\n";
+    print FHO "##gff-version 3\n";
+    while(<FHI>) {
+        chomp;
+        next if !$_ || /^\#/;
+        my @ps = split "\t";
+        my $type = $ps[2];
+        if($type =~ /^(region)$/) {
+            next;
+        }
+        print FHO join("\t", @ps)."\n";
+    }
+    close FHI;
+    close FHO;
+}
 
 #----------------------------------- MAIN -----------------------------------#
 GetOptions(%options) or pod2usage(2);
@@ -224,6 +242,8 @@ if($opt eq "tair") {
     format_gff_jcvi($fi, $fo);
 } elsif($opt eq "lj") {
     format_gff_lj($fi, $fo);
+} elsif($opt eq "genbank") {
+    format_gff_genbank($fi, $fo);
 } else {
     print "option [$opt] not supported\n";
     pod2usage(1, -exitval=>2);

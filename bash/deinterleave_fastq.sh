@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: deinterleave_fastq.sh < interleaved.fastq f.fastq r.fastq [compress]
+# Usage: deinterleave_fastq.sh < interleaved.fastq f.fastq r.fastq 8 [compress]
 # 
 # Deinterleaves a FASTQ file of paired reads into two FASTQ
 # files specified on the command line. Optionally GZip compresses the output
@@ -16,15 +16,15 @@
 
 # Set up some defaults
 GZIP_OUTPUT=0
-PIGZ_COMPRESSION_THREADS=10
+PIGZ_COMPRESSION_THREADS=$3
 
 # If the third argument is the word "compress" then we'll compress the output using pigz
-if [[ $3 == "compress" ]]; then
+if [[ $4 == "compress" ]]; then
 	  GZIP_OUTPUT=1
 fi
 
 if [[ ${GZIP_OUTPUT} == 0 ]]; then
 	paste - - - - - - - -  | tee >(cut -f 1-4 | tr "\t" "\n" > $1) | cut -f 5-8 | tr "\t" "\n" > $2
 else
-	paste - - - - - - - -  | tee >(cut -f 1-4 | tr "\t" "\n" | pigz --best --processes ${PIGZ_COMPRESSION_THREADS} > $1) | cut -f 5-8 | tr "\t" "\n" | pigz --best --processes ${PIGZ_COMPRESSION_THREADS} > $2
+	paste - - - - - - - -  | tee >(cut -f 1-4 | tr "\t" "\n" | pigz --fast --processes ${PIGZ_COMPRESSION_THREADS} > $1) | cut -f 5-8 | tr "\t" "\n" | pigz --fast --processes ${PIGZ_COMPRESSION_THREADS} > $2
 fi
