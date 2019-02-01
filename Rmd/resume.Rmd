@@ -19,7 +19,7 @@ phone: "612 532 3168"
 web: orionzhou.github.io
 updated: no
 
-geometry: margin=1in
+geometry: margin=.7in
 fontfamily: mathpazo
 fontsize: 11pt
 fontfamilyoptions: sc, osf
@@ -33,7 +33,9 @@ urlcolor: blue
 # Research Experiences
 ## Post Doctoral Associate, Dept. of Plant and Microbial Biology, University of Minnesota
 
-* Constructing gene regulatory networks across different tissues for multiple maize accessions to understand the genetic basis of heterosis
+* Illucidate dynamic patterns of gene expression additivity and regulatory variation throughout maize development
+
+* Build gene regulatory networks across maize development to understand the genetic basis of heterosis
 
 ## Graduate Research Assistant, Dept. of Plant Pathology, University of Minnesota
 
@@ -41,7 +43,7 @@ urlcolor: blue
 
 * Constructed *de novo* assemblies of 15 *Medicago* accessions and built a *Medicago* Pan-genome
 
-* Systematically characterized genome-wide architecture and patterns of structural variants of defense-related gene families in *Medicago* populations;
+* Systematically characterized genome-wide architecture and patterns of structural variants of defense-related gene families in *Medicago* populations
 
 # Education
 * Ph.D. Plant Pathology & Bioinformatics, University of Minnesota \hfill 2015
@@ -73,6 +75,8 @@ urlcolor: blue
 * 2012, Elwin Stewart Graduate Student Travel Award, University of Minnesota
 
 # Publications
+* **Zhou, P.**, Hirsch, C. N., *et al*. (2018) Dynamic patterns of gene expression additivity and regulatory variation throughout maize development. *Molecular Plant*.
+
 * **Zhou, P.**, Silverstein, K. A. T., *et al*. (2017) Exploring structural variation and gene family architecture with *De Novo* assemblies of 15 *Medicago* genomes. *BMC Genomics*.
 
 * Moll, K. M.^\*^, **Zhou, P.**^\*^, *et al*. (2017) Strategies for utilizing BioNano and Dovetail explored through a second reference quality assembly for the legume model, *Medicago truncatula*. *BMC Genomics*.
@@ -94,10 +98,3 @@ urlcolor: blue
 * Young, N. D., *et al*. (2011). The *Medicago* genome provides insight into the evolution of rhizobial symbioses. *Nature*. 
 
 * Branca, A., Paape, T. D., **Zhou, P.**, *et al*. (2011). Whole-genome nucleotide diversity, recombination, and linkage disequilibrium in the model legume *Medicago truncatula*. *Proceedings of the National Academy of Sciences*.
-
-
-<!--
-require(rmarkdown) 
-rmarkdown::render("/home/springer/zhoux379/git/luffy/rmd/CV.Rmd")
-file.copy("/home/springer/zhoux379/git/luffy/rmd/CV.pdf", "/home/springer/zhoux379/git/orionzhou.github.io/docs", overwrite = T)
--->
